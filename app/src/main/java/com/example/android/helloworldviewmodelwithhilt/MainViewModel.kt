@@ -3,8 +3,13 @@ package com.example.android.helloworldviewmodelwithhilt
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val service: SampleService
+) : ViewModel() {
 
     private val count = MutableLiveData<Int>(0)
 
@@ -17,3 +22,5 @@ class MainViewModel : ViewModel() {
     }
 
 }
+
+class SampleService @Inject constructor()
