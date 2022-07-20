@@ -2,6 +2,9 @@ package com.example.android.helloworldviewmodelwithhilt
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import com.example.android.helloworldviewmodelwithhilt.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -11,8 +14,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Create a ViewModel the first time the system calls an activity's onCreate() method.
+        // Re-created activities receive the same MyViewModel instance created by the first activity.
+
+        // Use the 'by viewModels()' Kotlin property delegate
+        // from the activity-ktx artifact
+        val viewModel by viewModels<MainViewModel>()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+
+        binding.buttonIncrement.setOnClickListener {
+            viewModel.incrementCount()
+        }
+
+        viewModel.getCount().observe(this, Observer<Int>{ count ->
+            // update UI
+            binding.textViewFirst.text = "Count: $count"
+        })
     }
 }
