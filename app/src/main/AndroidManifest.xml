@@ -18,6 +18,9 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".SecondActivity"
+            android:exported="false" />
+        <activity
             android:name=".IndexActivity"
             android:exported="true">
             <intent-filter>

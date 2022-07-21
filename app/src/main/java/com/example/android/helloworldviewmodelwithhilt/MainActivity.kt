@@ -2,7 +2,6 @@ package com.example.android.helloworldviewmodelwithhilt
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.example.android.helloworldviewmodelwithhilt.databinding.ActivityMainBinding
