@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class IndexViewModel @Inject constructor(
-    private val service: SampleService
+    private val service: NetworkModule.SampleService
 ) : ViewModel() {
 
     fun incrementCount() {
